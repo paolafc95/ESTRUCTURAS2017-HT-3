@@ -5,6 +5,11 @@
  */
 package Sorting;
 import Listas.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 /**
  *
@@ -16,41 +21,11 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
-        
-        
-        // TODO code application logic here
-        String [] texto = new String[5];
-        texto[0]= "hello";
-        texto[1]= "from";
-        texto[2]= "the ";
-        texto[3]= "other";
-        texto[4]= "side";       
-        
-        Sorting.selectionSort(texto);
-        for (int i =0; i< 5; i++)
-        {
-            System.out.println(texto [i]);
-        }
-                
-                
-        Contact[] Agenda = new Contact[5];
-        Agenda[0] = new Contact("Juan", "Martinez","12345678");
-        Agenda[1] = new Contact("Pedro", "Gomez","12345678");
-        Agenda[2] = new Contact("Esteban", "Gonzalez","12345678");
-        Agenda[3] = new Contact("Maria", "Morazan","12345678");
-        Agenda[4] = new Contact("Carla", "Solis","12345678");
-        
-        Sorting.selectionSort(Agenda);
+        Lista<String> numeros = new Lista<>();
 
-        for (int i =0; i< 5; i++)
-        {
-            System.out.println(Agenda[i]);
-        }
 
         Interpreter interpretador= new Interpreter();
-        String archivo= "datos.txt";
+        String archivo= "Listado.txt";
         try {
             //se lee el archivo
             File data = new File(archivo);
@@ -62,7 +37,7 @@ public class NewMain {
             int contador=0;
             while ((linea = bufferedReader.readLine()) != null) {
                 //se agrega el string de operación a la cola
-                cola.enQueue(linea);
+                numeros.AgregarNodo(linea);
                 contador++;
             }
             //se cierra el lector de archivos
