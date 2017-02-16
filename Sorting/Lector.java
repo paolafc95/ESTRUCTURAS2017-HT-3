@@ -38,16 +38,11 @@ public class Lector{
             fileReader.close();
             System.out.println("Se ha terminado de leer el archivo "+archivo);
             int j=0;
+
+
             System.out.println("Cantidad de lineas leidas: "+contador);
-            while(j<contador){
-                //se saca el registro de la cola
-                String temporal =interpretador.Read(cola.deQueue());
-                System.out.println(temporal);
-                //se interpreta el archivo de la cola
-                int result= interpretador.Analize(temporal);
-                j++;
-                System.out.println("resultado de operar la linea "+j+" es: "+result);
-            }
+            Sorting ordenador = new Sorting();
+
 
         } catch (IOException e) {
             e.printStackTrace();

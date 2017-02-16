@@ -5,7 +5,6 @@
  */
 package Sorting;
 import Listas.*;
-import EjercicioRadio.MemoryBoton;
 
 /**
  *
@@ -44,26 +43,42 @@ public class NewMain {
         Agenda[4] = new Contact("Carla", "Solis","12345678");
         
         Sorting.selectionSort(Agenda);
-        
+
         for (int i =0; i< 5; i++)
         {
             System.out.println(Agenda[i]);
         }
-        
-        MemoryBoton[] ABotones = new MemoryBoton[5];
-        
-        ABotones[0] =(new MemoryBoton("AM","530"));
-        ABotones[1] =(new MemoryBoton("FM","96.5"));
-        ABotones[2] =(new MemoryBoton("AM","540"));
-        ABotones[3] =(new MemoryBoton("AM","560"));
-        ABotones[4] =(new MemoryBoton("FM","94.9"));
-        
-        Sorting.selectionSort(ABotones);
-        for (int i =0; i< 5; i++)
-        {
-            System.out.println(ABotones [i]);
-        }        
-            
+
+        Interpreter interpretador= new Interpreter();
+        String archivo= "datos.txt";
+        try {
+            //se lee el archivo
+            File data = new File(archivo);
+            FileReader fileReader = new FileReader(data);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            StringBuffer stringBuffer = new StringBuffer();
+            String linea;
+            //se utiliza un contador, pues de lo contrario sacar la cola se tendría problemas con valores faltantes
+            int contador=0;
+            while ((linea = bufferedReader.readLine()) != null) {
+                //se agrega el string de operación a la cola
+                cola.enQueue(linea);
+                contador++;
+            }
+            //se cierra el lector de archivos
+            fileReader.close();
+            System.out.println("Se ha terminado de leer el archivo "+archivo);
+            int j=0;
+
+
+            System.out.println("Cantidad de lineas leidas: "+contador);
+            Sorting ordenador = new Sorting();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
     
 }
